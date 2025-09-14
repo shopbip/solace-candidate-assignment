@@ -32,7 +32,7 @@ export default function Home() {
         advocate.lastName.includes(searchTerm) ||
         advocate.city.includes(searchTerm) ||
         advocate.degree.includes(searchTerm) ||
-        advocate.specialties.includes(searchTerm) ||
+        advocate.specialties.find((specialty) => specialty.includes(searchTerm)) ||
         advocate.yearsOfExperience.toString().includes(searchTerm)
       );
     });
