@@ -81,9 +81,28 @@ export default function Home() {
 
   return (
     <main style={{ margin: "24px" }}>
-      <h1>Solace Advocates</h1>
-      <br />
-      <br />
+      <header style={{ 
+        textAlign: "center", 
+        marginBottom: "40px",
+        paddingBottom: "20px",
+        borderBottom: "2px solid #e1e5e9"
+      }}>
+        <h1 style={{ 
+          fontSize: "2.5rem", 
+          fontWeight: "700", 
+          color: "#2c3e50",
+          margin: "0 0 8px 0"
+        }}>
+          Solace Advocates
+        </h1>
+        <p style={{ 
+          fontSize: "1.1rem", 
+          color: "#6c757d", 
+          margin: "0"
+        }}>
+          Find qualified health professionals
+        </p>
+      </header>
       
       {isLoading && (
         <div>
@@ -100,16 +119,69 @@ export default function Home() {
       
       {!isLoading && !error && (
         <>
-          <div>
-            <p>Search</p>
-            <p>
-              Searching for: <span id="search-term">{searchedTerm}</span>
-            </p>
-            <input style={{ border: "1px solid black" }} onChange={onChange} />
-            <button onClick={onClick}>Reset Search</button>
+          {/* Search Section */}
+          <div style={{ 
+            backgroundColor: "#f8f9fa",
+            padding: "24px",
+            borderRadius: "8px",
+            border: "1px solid #e9ecef",
+            marginBottom: "32px"
+          }}>
+            <h2 style={{ 
+              fontSize: "1.5rem", 
+              fontWeight: "600", 
+              color: "#2c3e50",
+              margin: "0 0 16px 0"
+            }}>
+              Search Advocates
+            </h2>
+            
+            <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
+              <input 
+                style={{ 
+                  flex: "1",
+                  minWidth: "300px",
+                  padding: "12px 16px",
+                  border: "2px solid #dee2e6",
+                  borderRadius: "6px",
+                  fontSize: "16px",
+                  outline: "none",
+                  transition: "border-color 0.2s ease"
+                }}
+                onChange={onChange}
+                value={searchedTerm}
+                placeholder="Search by name, city, degree, or specialty..."
+                onFocus={(e) => e.target.style.borderColor = "#007bff"}
+                onBlur={(e) => e.target.style.borderColor = "#dee2e6"}
+              />
+              <button 
+                onClick={onClick}
+                style={{
+                  backgroundColor: "#6c757d",
+                  color: "white",
+                  border: "none",
+                  padding: "12px 20px",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  whiteSpace: "nowrap"
+                }}
+              >
+                Clear Search
+              </button>
+            </div>
+            
+            {searchedTerm && (
+              <p style={{ 
+                margin: "12px 0 0 0", 
+                fontSize: "14px", 
+                color: "#6c757d"
+              }}>
+                Searching for: <strong>{searchedTerm}</strong>
+              </p>
+            )}
           </div>
-          <br />
-          <br />
           <table>
             <thead>
               <tr>
