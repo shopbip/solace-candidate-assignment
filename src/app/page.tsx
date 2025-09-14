@@ -182,38 +182,163 @@ export default function Home() {
               </p>
             )}
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>City</th>
-                <th>Degree</th>
-                <th>Specialties</th>
-                <th>Years of Experience</th>
-                <th>Phone Number</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredAdvocates.map((advocate) => {
-                return (
-                  <tr key={advocate.id}>
-                    <td>{advocate.firstName}</td>
-                    <td>{advocate.lastName}</td>
-                    <td>{advocate.city}</td>
-                    <td>{advocate.degree}</td>
-                    <td>
-                      {advocate.specialties.map((s, index) => (
-                        <div key={index}>{s}</div>
-                      ))}
-                    </td>
-                    <td>{advocate.yearsOfExperience}</td>
-                    <td>{advocate.phoneNumber}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          {/* Table */}
+          <div style={{ 
+            backgroundColor: "white",
+            borderRadius: "8px",
+            border: "1px solid #e9ecef",
+            overflow: "hidden",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+          }}>
+            <table style={{ 
+              width: "100%", 
+              borderCollapse: "collapse",
+              fontSize: "14px"
+            }}>
+              <thead>
+                <tr style={{ backgroundColor: "#f8f9fa" }}>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    First Name
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    Last Name
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    City
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    Degree
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    Specialties
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    Experience
+                  </th>
+                  <th style={{ 
+                    padding: "16px 12px", 
+                    textAlign: "left", 
+                    fontWeight: "600",
+                    color: "#495057",
+                    borderBottom: "2px solid #dee2e6"
+                  }}>
+                    Phone
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredAdvocates.map((advocate, index) => {
+                  return (
+                    <tr 
+                      key={advocate.id}
+                      style={{ 
+                        backgroundColor: index % 2 === 0 ? "white" : "#f8f9fa",
+                        borderBottom: "1px solid #e9ecef"
+                      }}
+                    >
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        fontWeight: "500",
+                        color: "#2c3e50"
+                      }}>
+                        {advocate.firstName}
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        fontWeight: "500",
+                        color: "#2c3e50"
+                      }}>
+                        {advocate.lastName}
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        color: "#495057"
+                      }}>
+                        {advocate.city}
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        color: "#495057"
+                      }}>
+                        {advocate.degree}
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        color: "#495057"
+                      }}>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                          {advocate.specialties.map((s, index) => (
+                            <span 
+                              key={index}
+                              style={{
+                                backgroundColor: "#e3f2fd",
+                                color: "#1565c0",
+                                padding: "2px 8px",
+                                borderRadius: "12px",
+                                fontSize: "12px",
+                                fontWeight: "500"
+                              }}
+                            >
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        color: "#495057"
+                      }}>
+                        {advocate.yearsOfExperience} years
+                      </td>
+                      <td style={{ 
+                        padding: "16px 12px", 
+                        color: "#495057",
+                        fontFamily: "monospace"
+                      }}>
+                        {advocate.phoneNumber}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
     </main>
