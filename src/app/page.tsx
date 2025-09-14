@@ -221,10 +221,12 @@ export default function Home() {
             borderRadius: "8px",
             border: "1px solid #e9ecef",
             overflow: "hidden",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)"
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            overflowX: "auto"
           }}>
             <table style={{ 
               width: "100%", 
+              minWidth: "800px",
               borderCollapse: "collapse",
               fontSize: "14px"
             }}>
