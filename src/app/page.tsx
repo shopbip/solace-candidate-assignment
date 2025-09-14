@@ -6,6 +6,7 @@ import { Advocate } from "../types";
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
   const [filteredAdvocates, setFilteredAdvocates] = useState<Advocate[]>([]);
+  const [searchedTerm, setSearchedTerm] = useState<string>("");
 
   useEffect(() => {
     console.log("fetching advocates...");
@@ -21,7 +22,7 @@ export default function Home() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
 
-    document.getElementById("search-term").innerHTML = searchTerm;
+    setSearchedTerm(searchTerm);
 
     console.log("filtering advocates...");
 
@@ -42,6 +43,7 @@ export default function Home() {
   const onClick = () => {
     console.log(advocates);
     setFilteredAdvocates(advocates);
+    setSearchedTerm("");
   };
 
   return (
@@ -52,7 +54,7 @@ export default function Home() {
       <div>
         <p>Search</p>
         <p>
-          Searching for: <span id="search-term"></span>
+          Searching for: <span id="search-term">{searchedTerm}</span>
         </p>
         <input style={{ border: "1px solid black" }} onChange={onChange} />
         <button onClick={onClick}>Reset Search</button>
