@@ -1,3 +1,8 @@
+export interface AdovacteFetchResponse {
+  data: Advocate[];
+  error?: string;
+}
+
 export interface Advocate {
   id: number;
   firstName: string;
