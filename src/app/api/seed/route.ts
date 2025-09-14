@@ -7,6 +7,12 @@ export async function POST(request: Request) {
   if (process.env.NODE_ENV !== 'development') {
     return Response.json({ error: 'Seeding only allowed in development' }, { status: 403 });
   }
+  
+  // Basic auth check
+  const authHeader = request.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.SEED_API_KEY}`) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     // Remove all existing advocates to make seeding idempotent
