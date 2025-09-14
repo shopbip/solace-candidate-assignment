@@ -11,6 +11,8 @@ export default function Home() {
   const [searchedTerm, setSearchedTerm] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
 
   const fetchAdvocates = useCallback(async () => {
     try {
@@ -56,6 +58,7 @@ export default function Home() {
     const searchTermLower = searchTerm.toLowerCase();
 
     setSearchedTerm(searchTerm);
+    setCurrentPage(1); // Reset to first page when searching
 
     console.log("filtering advocates...");
 
@@ -77,6 +80,17 @@ export default function Home() {
     console.log(advocates);
     setFilteredAdvocates(advocates);
     setSearchedTerm("");
+    setCurrentPage(1); // Reset to first page when clearing search
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredAdvocates.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentAdvocates = filteredAdvocates.slice(startIndex, endIndex);
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
   };
 
   return (
@@ -182,6 +196,25 @@ export default function Home() {
               </p>
             )}
           </div>
+          
+          {/* Results Info */}
+          <div style={{ 
+            marginBottom: "20px",
+            padding: "16px",
+            backgroundColor: "#e3f2fd",
+            borderRadius: "6px",
+            border: "1px solid #bbdefb"
+          }}>
+            <p style={{ 
+              margin: "0", 
+              fontSize: "16px", 
+              color: "#1565c0",
+              fontWeight: "500"
+            }}>
+              Showing {startIndex + 1} to {Math.min(endIndex, filteredAdvocates.length)} of {filteredAdvocates.length} advocates
+            </p>
+          </div>
+          
           {/* Table */}
           <div style={{ 
             backgroundColor: "white",
@@ -263,7 +296,7 @@ export default function Home() {
                 </tr>
               </thead>
               <tbody>
-                {filteredAdvocates.map((advocate, index) => {
+                {currentAdvocates.map((advocate, index) => {
                   return (
                     <tr 
                       key={advocate.id}
@@ -339,6 +372,79 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+          
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div style={{ 
+              marginTop: "24px", 
+              display: "flex", 
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "16px",
+              padding: "20px",
+              backgroundColor: "#f8f9fa",
+              borderRadius: "8px",
+              border: "1px solid #e9ecef"
+            }}>
+              <button 
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                style={{ 
+                  padding: "12px 20px",
+                  backgroundColor: currentPage === 1 ? "#6c757d" : "#007bff",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "6px",
+                  cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  transition: "background-color 0.2s ease"
+                }}
+              >
+                ← Previous
+              </button>
+              
+              <div style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                gap: "8px",
+                fontSize: "16px",
+                color: "#495057",
+                fontWeight: "500"
+              }}>
+                <span>Page</span>
+                <span style={{ 
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  padding: "6px 12px",
+                  borderRadius: "4px",
+                  minWidth: "40px",
+                  textAlign: "center"
+                }}>
+                  {currentPage}
+                </span>
+                <span>of {totalPages}</span>
+              </div>
+              
+              <button 
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                style={{ 
+                  padding: "12px 20px",
+                  backgroundColor: currentPage === totalPages ? "#6c757d" : "#007bff",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "6px",
+                  cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  transition: "background-color 0.2s ease"
+                }}
+              >
+                Next →
+              </button>
+            </div>
+          )}
         </>
       )}
     </main>
