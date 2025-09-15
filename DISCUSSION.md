@@ -1,20 +1,31 @@
 ## Further changes given more time
 
 ## API Route enhancements
-The API route for fetching advocates is bare bones. I would add data validation, caching, rate limiting and improve upon the error handling to ensure safety and reliability for this interaction. 
+The API route for fetching advocates needs better caching. Right now it only has a basic 5 minute cache of the most recent request.
 
 I would like to implement a wrapper for the api calls to ensure authorization, headers, and configurations are consistent across the API.
 
-## Fetch Query parameters
-I would consider modifying the advocate fetch route to accept query parameters. This could reduce the complexity on the front end and allow for more robust searches.
 
-## Components
-I would add a components folder and begin breaking down the search page into a search page components as well as sub components for the search bar and the search results.
+
+## Context
+The home page is a bit messy, with lots of code present for managing the search. Functions are being passed down to children. This can be cleaned up by adding context or a global state management tool.
+
+
 
 ## Search enhancement
-The search feature can be made more powerul. Since this seems like an administrative tool, I would suggest adding multi field search capability as well as an exclude fields option. I would also add a sort by option to sort results by a specific field in ascending/descending order.
+The search feature can be made more powerul. Right now only one input is given, but there could be an option to perform an advanced search across multiple fields.
 
 I would also modify the search so that if just a number is entered it will filter by years of experience greater than that number.
 
+
+
+## Styling
+Currently all of the styling is using inline tailwind. There is so much redundancy that I would recommend building custom classes that can be quickly referenced to pull in these frequently used styles.
+
+I wrote my code from a desktop cetnric perspective. While everything works fine in mobile, I would fully rework the mobile experience, possibly ditching the table view for a more custom type of grid of cards view.
+
+
 ## Layout
-The base layout is basic. It would be nice to have styling standards implemented in the layout in order to minimize redundant implementations in sub pages.
+The layout is bare bones. A header, navigation, and footer could be added in the layout.
+
+
