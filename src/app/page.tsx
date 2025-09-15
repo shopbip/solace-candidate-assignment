@@ -93,6 +93,17 @@ export default function Home() {
     setCurrentPage(newPage);
   };
 
+  // Format phone number for display
+  const formatPhoneNumber = (phoneNumber: number): string => {
+    const phoneStr = phoneNumber.toString();
+    // Format as (XXX) XXX-XXXX
+    if (phoneStr.length === 10) {
+      return `(${phoneStr.slice(0, 3)}) ${phoneStr.slice(3, 6)}-${phoneStr.slice(6)}`;
+    }
+    // Return as-is if not 10 digits
+    return phoneStr;
+  };
+
   return (
     <main style={{ margin: "24px" }}>
       <header style={{ 
@@ -361,13 +372,13 @@ export default function Home() {
                       }}>
                         {advocate.yearsOfExperience} years
                       </td>
-                      <td style={{ 
-                        padding: "16px 12px", 
-                        color: "#495057",
-                        fontFamily: "monospace"
-                      }}>
-                        {advocate.phoneNumber}
-                      </td>
+                       <td style={{ 
+                         padding: "16px 12px", 
+                         color: "#495057",
+                         fontFamily: "monospace"
+                       }}>
+                         {formatPhoneNumber(advocate.phoneNumber)}
+                       </td>
                     </tr>
                   );
                 })}
