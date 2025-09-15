@@ -6,6 +6,7 @@ import {
   jsonb,
   serial,
   timestamp,
+  bigint,
 } from "drizzle-orm/pg-core";
 
 const advocates = pgTable("advocates", {
@@ -16,7 +17,7 @@ const advocates = pgTable("advocates", {
   degree: text("degree").notNull(),
   specialties: jsonb("payload").default([]).notNull(),
   yearsOfExperience: integer("years_of_experience").notNull(),
-  phoneNumber: text("phone_number").notNull(),
+  phoneNumber: bigint("phone_number", { mode: "number" }).notNull(),
   createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
 });
 
