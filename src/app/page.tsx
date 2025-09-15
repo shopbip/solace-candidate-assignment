@@ -151,7 +151,51 @@ export default function Home() {
             totalCount={totalCount}
           />
           
-          <AdvocatesTable advocates={advocates} />
+          <div style={{ position: "relative" }}>
+            <AdvocatesTable advocates={advocates} />
+            {isSearching && (
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 10,
+                borderRadius: "8px"
+              }}>
+                <div style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  backgroundColor: "white",
+                  padding: "16px 24px",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+                  border: "1px solid #e9ecef"
+                }}>
+                  <div style={{
+                    width: "20px",
+                    height: "20px",
+                    border: "2px solid #007bff",
+                    borderTop: "2px solid transparent",
+                    borderRadius: "50%",
+                    animation: "spin 1s linear infinite"
+                  }} />
+                  <span style={{
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    color: "#495057"
+                  }}>
+                    Searching...
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
           
           <PaginationControls 
             currentPage={currentPage}

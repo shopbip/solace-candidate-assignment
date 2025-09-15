@@ -48,13 +48,19 @@ export default function SearchSection({ searchedTerm, onSearchChange, onClearSea
               right: "12px",
               top: "50%",
               transform: "translateY(-50%)",
-              width: "16px",
-              height: "16px",
-              border: "2px solid #007bff",
-              borderTop: "2px solid transparent",
-              borderRadius: "50%",
-              animation: "spin 1s linear infinite"
-            }} />
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
+              <div style={{
+                width: "16px",
+                height: "16px",
+                border: "2px solid #007bff",
+                borderTop: "2px solid transparent",
+                borderRadius: "50%",
+                animation: "spin 1s linear infinite"
+              }} />
+            </div>
           )}
         </div>
         <button 
