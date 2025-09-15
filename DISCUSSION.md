@@ -17,6 +17,8 @@ The search feature can be made more powerul. Right now only one input is given, 
 
 I would also modify the search so that if just a number is entered it will filter by years of experience greater than that number.
 
+Also on the API side, when a query is performed the specialties array is not being searched correctly. The search needs to be modified to check if there is a specialty in the array that fits the search term.
+
 
 
 ## Styling
