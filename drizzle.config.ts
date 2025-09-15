@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 const config = {
   dialect: "postgresql",
   schema: "./src/db/schema.ts",
