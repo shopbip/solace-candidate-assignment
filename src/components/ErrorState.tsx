@@ -5,29 +5,13 @@ interface ErrorStateProps {
 
 export default function ErrorState({ error, onRetry }: ErrorStateProps) {
   return (
-    <div style={{ 
-      backgroundColor: "#f8d7da",
-      color: "#721c24",
-      padding: "16px",
-      borderRadius: "8px",
-      border: "1px solid #f5c6cb",
-      marginBottom: "24px"
-    }}>
-      <p style={{ margin: "0 0 12px 0", fontWeight: "500" }}>
+    <div className="bg-red-100 text-red-800 p-4 rounded-lg border border-red-200 mb-6">
+      <p className="m-0 mb-3 font-medium">
         Error: {error}
       </p>
       <button 
         onClick={onRetry}
-        style={{
-          backgroundColor: "#dc3545",
-          color: "white",
-          border: "none",
-          padding: "8px 16px",
-          borderRadius: "4px",
-          cursor: "pointer",
-          fontSize: "14px",
-          fontWeight: "500"
-        }}
+        className="bg-red-600 text-white border-none px-4 py-2 rounded cursor-pointer text-sm font-medium hover:bg-red-700 transition-colors"
       >
         Retry
       </button>

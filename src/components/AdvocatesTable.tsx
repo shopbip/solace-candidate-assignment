@@ -17,83 +17,29 @@ export default function AdvocatesTable({ advocates }: AdvocatesTableProps) {
   };
 
   return (
-    <div style={{ 
-      backgroundColor: "white",
-      borderRadius: "8px",
-      border: "1px solid #e9ecef",
-      overflow: "hidden",
-      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-      overflowX: "auto"
-    }}>
-      <table style={{ 
-        width: "100%", 
-        minWidth: "800px",
-        borderCollapse: "collapse",
-        fontSize: "14px"
-      }}>
+    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm overflow-x-auto">
+      <table className="w-full min-w-[800px] border-collapse text-sm">
         <thead>
-          <tr style={{ backgroundColor: "#f8f9fa" }}>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+          <tr className="bg-gray-50">
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               First Name
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               Last Name
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               City
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               Degree
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               Specialties
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               Experience
             </th>
-            <th style={{ 
-              padding: "16px 12px", 
-              textAlign: "left", 
-              fontWeight: "600",
-              color: "#495057",
-              borderBottom: "2px solid #dee2e6"
-            }}>
+            <th className="px-3 py-4 text-left font-semibold text-gray-600 border-b-2 border-gray-300">
               Phone
             </th>
           </tr>
@@ -103,71 +49,38 @@ export default function AdvocatesTable({ advocates }: AdvocatesTableProps) {
             return (
               <tr 
                 key={advocate.id}
-                style={{ 
-                  backgroundColor: index % 2 === 0 ? "white" : "#f8f9fa",
-                  borderBottom: "1px solid #e9ecef"
-                }}
+                className={`border-b border-gray-200 ${
+                  index % 2 === 0 ? 'bg-white' : 'bg-gray-50'
+                }`}
               >
-                <td style={{ 
-                  padding: "16px 12px", 
-                  fontWeight: "500",
-                  color: "#2c3e50"
-                }}>
+                <td className="px-3 py-4 font-medium text-gray-800">
                   {advocate.firstName}
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  fontWeight: "500",
-                  color: "#2c3e50"
-                }}>
+                <td className="px-3 py-4 font-medium text-gray-800">
                   {advocate.lastName}
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  color: "#495057"
-                }}>
+                <td className="px-3 py-4 text-gray-600">
                   {advocate.city}
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  color: "#495057"
-                }}>
+                <td className="px-3 py-4 text-gray-600">
                   {advocate.degree}
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  color: "#495057"
-                }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                <td className="px-3 py-4 text-gray-600">
+                  <div className="flex flex-wrap gap-1">
                     {advocate.specialties.map((s, index) => (
                       <span 
                         key={index}
-                        style={{
-                          backgroundColor: "#e3f2fd",
-                          color: "#1565c0",
-                          padding: "2px 8px",
-                          borderRadius: "12px",
-                          fontSize: "12px",
-                          fontWeight: "500"
-                        }}
+                        className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
                       >
                         {s}
                       </span>
                     ))}
                   </div>
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  color: "#495057"
-                }}>
+                <td className="px-3 py-4 text-gray-600">
                   {advocate.yearsOfExperience} years
                 </td>
-                <td style={{ 
-                  padding: "16px 12px", 
-                  color: "#495057",
-                  fontFamily: "monospace",
-                  whiteSpace: "nowrap"
-                }}>
+                <td className="px-3 py-4 text-gray-600 font-mono whitespace-nowrap">
                   {formatPhoneNumber(advocate.phoneNumber)}
                 </td>
               </tr>

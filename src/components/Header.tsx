@@ -1,27 +1,11 @@
 export default function Header() {
   return (
-    <header style={{ 
-      textAlign: "center", 
-      marginBottom: "40px",
-      paddingBottom: "20px",
-      borderBottom: "2px solid #e1e5e9"
-    }}>
-      <h1 style={{ 
-        fontSize: "2.5rem", 
-        fontWeight: "700", 
-        color: "#2c3e50",
-        margin: "0 0 8px 0",
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
-      }}>
+    <header className="text-center mb-10 pb-5 border-b-2 border-gray-200">
+      <h1 className="text-4xl font-bold text-gray-800 mb-2 font-sans">
         Solace Advocates
       </h1>
-      <p style={{ 
-        fontSize: "1.1rem", 
-        color: "#6c757d", 
-        margin: "0",
-        fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
-      }}>
-        Find qualified health professionals
+      <p className="text-lg text-gray-500 m-0 font-sans">
+        Find a qualified health professional that meets your needs!
       </p>
     </header>
   );
