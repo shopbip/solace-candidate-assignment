@@ -1,5 +1,18 @@
 export interface AdovacteFetchResponse {
   data: Advocate[];
+  pagination?: {
+    page: number;
+    limit: number;
+    totalCount: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+  };
+  filters?: {
+    search: string | null;
+    sort: string;
+    order: string;
+  };
   error?: string;
 }
 
